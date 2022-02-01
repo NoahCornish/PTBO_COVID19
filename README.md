@@ -4,6 +4,7 @@
 # This Github repository R Script files will only by updated if changes are necessary.
 
 Noah Cornish Twitter: https://twitter.com/NoahCornish
-COVID-19 In peterborough Twitter: https://twitter.com/covid19ptbo
+
+COVID-19 in peterborough Twitter: https://twitter.com/covid19ptbo
 
 

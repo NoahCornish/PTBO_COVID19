@@ -5,6 +5,6 @@
 
 Noah Cornish Twitter: https://twitter.com/NoahCornish
 
-COVID-19 in peterborough Twitter: https://twitter.com/covid19ptbo
+COVID-19 in Peterborough Twitter: https://twitter.com/covid19ptbo
 
 

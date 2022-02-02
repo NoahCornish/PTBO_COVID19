@@ -22,10 +22,19 @@ ss_LTC <- gs4_get('https://docs.google.com/spreadsheets/d/17MlCgdoCt551VKWOTY6Hq
 ON_PHU_LTC_OUTBREAK_API <- fromJSON(
   "https://data.ontario.ca/api/3/action/datastore_search?resource_id=4b64488a-0523-4ebb-811a-fac2f07e6d59&limit=5000000000")
 
+ON_LTC_OUTBREAKS <- as.data.frame(ON_PHU_LTC_OUTBREAK_API$result$records)
 
-PTBO_LTC_OUTBREAKS <- as.data.frame(ON_PHU_LTC_OUTBREAK_API$result$records) %>% 
+PTBO_LTC_OUTBREAKS <- as.data.frame(ON_PHU_LTC_OUTBREAK_API$result$records)
+
+PTBO_LTC_OUTBREAKS <- data.frame(lapply(PTBO_LTC_OUTBREAKS, function(a){
+  if (is.character(a)) return(toupper(a))
+  else return(a)
+}
+))
   
-  filter(PHU == "Peterborough") %>% 
+PTBO_LTC_OUTBREAKS <- PTBO_LTC_OUTBREAKS %>% 
+  
+  filter(PHU == "PETERBOROUGH") %>% 
   rename(Date = Report_Data_Extracted) %>% 
   select(Date, PHU, LTC_Home, City, Beds, Total_LTC_Resident_Cases,
          Total_LTC_Resident_Deaths, Total_LTC_HCW_Cases)

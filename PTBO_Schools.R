@@ -13,7 +13,7 @@ library(googlesheets4)
 library(stringr)
 library(scales)
 
-dfToday <- Sys.Date() - 3  # date for Absenteeism 
+dfToday <- Sys.Date() - 1  # date for Absenteeism 
 
 
 #CONSEIL SCOLAIRE CATHOLIQUE MONAVENIR excluded
@@ -62,7 +62,7 @@ Absenteeism1 <- scales::percent(PTBO_Schools$`Absenteeism Percentage`)
 PTBO_Schools <- PTBO_Schools %>% 
   mutate(`Absenteeism Percentage` = Absenteeism1)
 
-
+range_delete(ss, range = "2:10000")
 sheet_append(ss, data = PTBO_Schools)
 
 #############

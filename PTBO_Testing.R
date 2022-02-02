@@ -57,6 +57,7 @@ PTBO_Testing <- PTBO_Testing %>%
 
 
 ### WRITE TO GOOGLE SHEET ###
+range_delete(ss_testing, range = "2:10000")
 sheet_append(ss_testing, data = PTBO_Testing)  
   
   

@@ -7,4 +7,11 @@ Noah Cornish Twitter: https://twitter.com/NoahCornish
 
 COVID-19 in Peterborough Twitter: https://twitter.com/covid19ptbo
 
+# HOW TO USE THIS DATA
+
+You can create individual 'rscripts' to run these or create one file and copy all three into one.
+
+For the School data make sure the "data" is set to -1 and is set to -3 on Mondays
+
+
 

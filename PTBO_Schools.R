@@ -58,6 +58,26 @@ PTBO <- filter(PTBO, school %in% c("ADAM SCOTT INTERMED S","APSLEY CENTRAL PS", 
 
 PTBO$absence_percentage_staff_students <- as.numeric(PTBO$absence_percentage_staff_students)
 
+PTBO_Schools_AllData <- PTBO%>% 
+  mutate(`Absenteeism Percentage` = absence_percentage_staff_students) %>%
+  #mutate(`Absenteeism Percentage` = label_percent(absence_percentage_staff_students)) %>% 
+  select(date, school_board, school, city_or_town, `Absenteeism Percentage`) %>%
+  select(date, school_board, school, city_or_town, `Absenteeism Percentage`) %>% 
+  rename(Date = date, School = school, `School Board` = school_board, Location = city_or_town)
+PTBO_Schools_AllData$Date <- gsub("T00:00:00","", as.character(PTBO_Schools_AllData$Date))
+
+Absenteeism1 <- scales::percent(PTBO_Schools_AllData$`Absenteeism Percentage`)
+
+
+PTBO_Schools_AllData <- PTBO_Schools_AllData %>% 
+  mutate(`Absenteeism Percentage` = Absenteeism1)
+
+#write to csv
+write.csv(PTBO_Schools_AllData,
+          file = "PTBO_School_AllData.csv",
+          row.names = FALSE)
+
+
 PTBO_Schools <- PTBO %>% 
   mutate(`Absenteeism Percentage` = absence_percentage_staff_students) %>%
   #mutate(`Absenteeism Percentage` = label_percent(absence_percentage_staff_students)) %>% 

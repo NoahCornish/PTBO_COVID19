@@ -1,5 +1,6 @@
 # Built by Noah Cornish using data from the open government database for 
 # the province of Ontario. 
+# Data: https://data.ontario.ca/dataset/summary-of-cases-in-schools/resource/e3214f57-9c24-4297-be27-a1809f9044ba
 
 ###### PTBO Schools #######
 

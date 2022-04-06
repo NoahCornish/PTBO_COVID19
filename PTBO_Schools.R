@@ -13,7 +13,7 @@ library(googlesheets4)
 library(stringr)
 library(scales)
 
-dfToday <- Sys.Date() - 1  # date for Absenteeism 
+dfToday <- Sys.Date() - 1  # date for Absenteeism | Remember to change on Mondays
 
 
 #CONSEIL SCOLAIRE CATHOLIQUE MONAVENIR excluded
@@ -21,15 +21,20 @@ dfToday <- Sys.Date() - 1  # date for Absenteeism
 #PETERBOROUGH VICTORIA NORTHUM CLARINGTON CATHOLIC DISTRICT SCHOOL BOARD included
 
 Abs_Peterborough <- fromJSON(
-  "https://data.ontario.ca/api/3/action/datastore_search?resource_id=e3214f57-9c24-4297-be27-a1809f9044ba&limit=5000000000")
+  "https://data.ontario.ca/datastore/dump/e3214f57-9c24-4297-be27-a1809f9044ba?format=json")
 
-PTBO <- as.data.frame(Abs_Peterborough$result$records)
+PTBO <- as.data.frame(Abs_Peterborough$records)
 
 PTBO <- data.frame(lapply(PTBO, function(a){
   if (is.character(a)) return(toupper(a))
   else return(a)
 }
 ))
+
+PTBO <- PTBO %>% 
+  rename(ID = `V1`, date = `V2`, school_board = `V3`,
+         school_id = `V4`, school = `V5`,
+         city_or_town = `V6`, absence_percentage_staff_students = `V7`)
 
 
 
